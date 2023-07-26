@@ -2,14 +2,19 @@ import { useState } from 'react'
 import './App.css'
 import Searchbar from './components/Searchbar'
 import CardContainer from './components/CardContainer';
-function App() {
-  const [count, setCount] = useState(0)
+import Card from './components/Card';
+import getpopulardata from './components/apifunctions';
 
+function App() {
+ getpopulardata();
   return (
     <>
       <div className="searchbar">
         <Searchbar />
-        <CardContainer />
+        <div className='popular'>
+        popular movies
+        </div>
+       <CardContainer />
       </div>
     </>
   )

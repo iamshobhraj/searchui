@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Card = ({ title, content }) => {
+const Card = ({ original_title, poster_path }) => {
+  const urrl = `https://image.tmdb.org/t/p/w220_and_h330_face ${poster_path}`
   return (
     <div className="card">
-      <h3>{title}</h3>
-      <p>{content}</p>
+      <div className="foto"><img src={urrl} ></img></div>
+      <p>{original_title}</p>
     </div>
   );
 };

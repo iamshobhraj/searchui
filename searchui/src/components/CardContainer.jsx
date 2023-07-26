@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './Card';
+import './styles/CardContainer.css';
 
 const cardData = [
   { title: 'data 1', content: 'data 1 info' },

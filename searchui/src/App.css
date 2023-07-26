@@ -1,5 +1,4 @@
 .App{
-  background-color: black;
   height: 100vh;
   width: 100vw;
   color: white;
@@ -14,4 +13,9 @@
   align-items: center;
   min-height: 200px;
   gap: 6px;
+}
+
+.popular{
+  margin-top: 9vh;
+  display: flex;
 }
