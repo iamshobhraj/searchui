@@ -12,7 +12,7 @@ const Searchbar = ({handlesearch}) => {
     }
     
     return <div className='imput'>
-        <input placeholder="Type to search..." value={value} onChange={inputchange}></input>        
+        <input placeholder="search for any movie around the world..." value={value} onChange={inputchange}></input>        
         <FaSearch id='searchicon' />
     </div>;
 }

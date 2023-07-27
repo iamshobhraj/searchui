@@ -3,44 +3,56 @@ import './App.css'
 import Searchbar from './components/Searchbar'
 import CardContainer from './components/CardContainer';
 import Card from './components/Card';
-import Getpopulardata from './components/apifunctions';
-import { alignProperty } from '@mui/material/styles/cssUtils';
+import * as apifncs from './components/apifunctions';
 
 
 function App() {
  
-const [Movies, setMovies] = useState([]);
-const [value, setvalue] = useState('');
+const [PMovies, setPMovies] = useState([]);
+const [SMovies, setSMovies] = useState([]);
+const [valoo, setvaloo] = useState('');
 useEffect(() => {
   async function fetchData() {
     try {
-      const popularMovies = await Getpopulardata();
-      console.log(popularMovies);
-      setMovies(popularMovies.slice(0, 6));
+      const popularMovies = await apifncs.Getpopulardata();
+      setPMovies(popularMovies.slice(0, 6));
     } catch (error) {
       console.error(error);
     }
+
+    try{
+      if (valoo !== ''){
+      const searchmovie = await apifncs.GetseaarchData(valoo);
+      setSMovies(searchmovie.slice(0,6));
+      }
+      else {
+        setSMovies([]);
+      }
+    }
+   catch (error) {
+    console.error(error);
+   }
   }
   fetchData();
-}, []); 
+}, [valoo]); 
 
 const searchoo = (svalue) => {
-  setvalue(svalue)
+  setvaloo(svalue)
 }  
 
+
+console.log(SMovies)
  
   return (
     <>
-      <div className="searchbar">
+      < div className="searchbar">
         <Searchbar handlesearch={searchoo} />
-        <div div className='popular'>
         <h1>Popular Movies</h1>
         <div className='popularlist'>
-          {Movies.map((movie, index) => { return <Card key={movie.id} original_title={movie.original_title} poster_path={movie.poster_path}  /> })}
+          {PMovies.map((movie, index) => { return <Card key={movie.id} original_title={movie.original_title} poster_path={movie.poster_path}  /> })}
         </div>
-        </div>
-        <h1>you searched for {value}</h1>
-       <CardContainer />
+        <h1>you searched for {valoo}</h1>
+       <CardContainer cardData={SMovies}/>
       </div>
     </>
   )
