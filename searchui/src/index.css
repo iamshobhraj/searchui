@@ -4,7 +4,12 @@
   padding: 0px;
 }
 
+#root{
+  height: 100vh;
+}
+
 body{
   background-color: black;
   color: white;
+  height: 100vh;
 }

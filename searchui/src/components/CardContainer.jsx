@@ -12,7 +12,7 @@ const CardContainer = () => {
   return (
     <div className="card-container">
       {cardData.map((card, index) => (
-        <Card key={index} title={card.title} content={card.content} />
+        <Card key={index} original_title={card.title} poster_path={card.content} />
       ))}
     </div>
   );

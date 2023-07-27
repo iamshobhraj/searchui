@@ -6,16 +6,15 @@ const options = {
     }
   };
 
-  async function getpopulardata() {
+  async function Getpopulardata() {
     try{
     const response = await fetch('https://api.themoviedb.org/3/movie/popular?region=IN', options);
     const popularData = await response.json().then((data) => data.results);
-    console.log(popularData);
-
+    return popularData;
     }
     catch(error){
         console.log(error);
     }
   }
 
-  export default getpopulardata;
+  export default Getpopulardata;
